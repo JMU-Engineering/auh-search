@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JMU Department of Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEDE6; --paper-raised:#F7F5EF; --ink:#1E2229; --ink-soft:#565F6B;
+    --ink-faint:#8A8F7E; --rule:#CBC6B8; --blue:#0066cc; --rust:#9C4221;
+    --font-serif:'Roboto Slab',Georgia,'Times New Roman',serif;
+    --font-sans:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-mono:'Roboto Mono','SFMono-Regular',Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue)}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+
+  /* hero */
+  header.hero{padding:78px 0 42px;border-bottom:1px solid var(--rule)}
+  .kicker{font-size:14px;color:var(--ink-soft);margin:0 0 14px}
+  h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(38px,6.2vw,56px);line-height:1.05;margin:0 0 18px;letter-spacing:-.01em;max-width:20ch}
+  .dek{font-size:17px;color:var(--ink-soft);max-width:none;margin:0 0 22px}
+  .stat-line{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-faint);margin:0}
+
+  /* nav */
+  .controls{padding:22px 0;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:20}
+  nav.jump{display:flex;flex-wrap:wrap;gap:4px 22px}
+  nav.jump a{font-size:14px;text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px}
+  @media (prefers-reduced-motion:no-preference){nav.jump a{transition:border-color .15s ease,color .15s ease}}
+  nav.jump a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+
+  /* section shell */
+  section.major{padding:58px 0 10px;border-bottom:1px solid var(--rule);scroll-margin-top:76px}
+  .feature[id]{scroll-margin-top:88px}
+  .sec-num{font-family:var(--font-mono);font-size:12px;color:var(--rust);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+  section.major > h2{font-family:var(--font-serif);font-weight:700;font-size:clamp(28px,4vw,36px);margin:0 0 10px}
+  .sec-intro{font-size:16px;color:var(--ink-soft);max-width:66ch;margin:0 0 8px}
+  #curriculum .sec-intro{max-width:none}
+  .sec-note{font-size:13px;color:var(--ink-faint);max-width:70ch;margin:14px 0 0;padding:10px 12px;background:var(--paper-raised);border-left:2px solid var(--rule)}
+
+  /* faculty */
+  #filter{width:100%;max-width:420px;font-family:var(--font-sans);font-size:15px;color:var(--ink);background:var(--paper-raised);border:none;border-bottom:1px solid var(--ink-faint);padding:9px 4px;margin:26px 0 4px}
+  #filter::placeholder{color:var(--ink-faint)}
+  .subgroup{padding:34px 0 4px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:26px 22px}
+  .subgroup.is-hidden{display:none}
+  .subgroup h3{grid-column:1/-1;font-family:var(--font-serif);font-weight:500;font-size:22px;margin:0 0 4px}
+  .subgroup .group-note{grid-column:1/-1;font-size:13.5px;color:var(--ink-faint);margin:0 0 8px;max-width:64ch}
+  .person{display:flex;flex-direction:column}
+  .person.is-hidden{display:none}
+  .portrait{width:100%;height:auto;aspect-ratio:1/1;border-radius:2px;overflow:hidden;background:var(--paper-raised);border:1px solid var(--rule);margin-bottom:10px}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .who .name{font-family:var(--font-serif);font-size:16px;font-weight:500;margin:0 0 3px}
+  .who .title{font-size:12.5px;color:var(--ink-soft);margin:0 0 4px;line-height:1.35}
+  .who .credential{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);line-height:1.4}
+  .who .flag{display:block;font-size:11px;color:var(--ink-faint);margin-top:5px;font-style:italic;line-height:1.35}
+  @media (max-width:720px){.subgroup{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:20px 16px}}
+
+  .staff-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:20px 22px;padding:18px 0 8px}
+  .staff-card.is-hidden{display:none}
+  .staff-card .portrait{width:100%;height:auto;aspect-ratio:1/1;margin-bottom:8px}
+  .staff-card .name{font-family:var(--font-serif);font-size:16px;font-weight:500;display:block}
+  .staff-card .role{font-size:13.5px;color:var(--ink-soft)}
+  #no-results{display:none;padding:30px 0;color:var(--ink-faint);font-size:15px}
+
+  /* curriculum */
+  .curriculum-figure{margin:26px 0 4px}
+  .curriculum-figure img{display:block;width:100%;height:auto;border:1px solid var(--rule);border-radius:2px;cursor:zoom-in}
+  .curriculum-figure figcaption{font-size:12.5px;color:var(--ink-faint);margin-top:8px}
+
+  /* lightbox */
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(30,34,41,.94);z-index:100;overflow:auto;cursor:zoom-out}
+  .lightbox.is-open{display:block}
+  .lightbox img{display:block;margin:56px auto;max-width:none;border-radius:2px}
+  .lightbox-close{position:fixed;top:18px;right:24px;font-family:var(--font-sans);font-size:13px;color:var(--paper);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:7px 16px;cursor:pointer}
+  .lightbox-hint{position:fixed;top:22px;left:28px;font-family:var(--font-mono);font-size:11.5px;color:rgba(255,255,255,.6);letter-spacing:.03em}
+  @media (max-width:640px){.lightbox-hint{display:none}}
+
+  /* student work */
+  .feature{padding:10px 0 42px}
+  .feature+.feature{border-top:1px solid var(--rule);padding-top:38px}
+  .feature-eyebrow{font-family:var(--font-mono);font-size:12px;color:var(--rust);text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px}
+  .feature h3{font-family:var(--font-serif);font-weight:500;font-size:23px;margin:0 0 10px;max-width:32ch}
+  .feature .meta{font-size:13.5px;color:var(--ink-faint);margin:0 0 20px}
+  .feature .meta a{color:var(--ink-soft)}
+  .photo-rail{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+  .photo-rail.single{grid-template-columns:1fr}
+  .photo-slot{position:relative;overflow:hidden;border:1px dashed var(--ink-faint);background:var(--paper-raised);border-radius:2px;padding:18px 16px;min-height:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+  .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .photo-slot .ph-fallback{position:relative;display:flex;flex-direction:column;gap:6px}
+  .photo-slot .ph-mark{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);text-transform:uppercase;align-self:flex-start;border:1px solid var(--rule);padding:2px 6px;border-radius:2px}
+  .photo-slot .ph-caption{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.4}
+  @media (max-width:640px){.photo-rail{grid-template-columns:1fr}}
+  .stats-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+  .pill{font-family:var(--font-mono);font-size:12px;color:var(--blue);border:1px solid var(--blue);border-radius:20px;padding:4px 12px;white-space:nowrap}
+  .feature p.body{font-size:15.5px;margin:0 0 16px;max-width:68ch}
+  blockquote.pull{margin:20px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rust);max-width:58ch}
+  blockquote.pull p{font-family:var(--font-serif);font-size:17px;font-style:italic;margin:0 0 6px}
+  blockquote.pull cite{font-family:var(--font-mono);font-style:normal;font-size:12.5px;color:var(--ink-faint)}
+  .roster{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px;max-width:70ch}
+  .roster .roster-label{color:var(--ink-faint);display:block;margin-bottom:4px}
+  .footnote{font-size:12.5px;color:var(--ink-faint);max-width:66ch;margin:14px 0 0;padding:10px 12px;background:var(--paper-raised);border-left:2px solid var(--rule)}
+  .more-card{display:grid;grid-template-columns:220px 1fr;gap:6px 28px;padding:22px 0;border-top:1px solid var(--rule)}
+  .more-card .what{font-family:var(--font-serif);font-size:18px;font-weight:500;margin:0 0 4px}
+  .more-card .when{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint)}
+  .more-card .desc p{font-size:14.5px;margin:0 0 6px}
+  .more-card .desc a{font-size:13px}
+  @media (max-width:640px){.more-card{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">James Madison University · Department of Engineering</p>
+  <h1>Department Head and Endowed Faculty Chair, Department of Engineering, James Madison University</h1>
+  <p class="dek">James Madison University (JMU) invites applications for the position of Department Head and Endowed Faculty Chair of Engineering. This is a tenured, 12-month appointment at the rank of Professor or Associate Professor. A recent $1.5 million gift establishing the endowed chair provides significant resources and flexibility for the Department Head to pursue a broad range of initiatives aligned with the Department’s needs, opportunities, and the successful candidate’s interests. </p>
+
+<p>Our ABET-accredited Department of Engineering consists of 18 instructional faculty and 6 staff members serving approximately 750 students, with about 120 graduates each year. The Department offers a B.S. in Engineering, and students may choose to pursue concentrations in Electro-Mechanical Systems, Geo-Environmental Systems, or Civil & Environmental Systems. As an undergraduate-focused engineering program within a large public university, we combine the close faculty-student interaction and small class sizes often associated with smaller programs with substantial facilities, staffing, and resources. Our project-based curriculum gives students significant responsibility for their own work in courses, laboratories, research, and design projects, creating a highly hands-on learning environment. Students have access to a fully staffed machine shop, fabrication laboratory, digital prototyping facilities, and dedicated capstone and project workspaces. Research, project, and instructional infrastructure includes more than $2 million in tools, instrumentation, and equipment located in over 30,000 square feet of dedicated engineering laboratory, fabrication, research, and project space.
+  </p>
+</header>
+
+<div class="controls">
+  <nav class="jump">
+    <a href="#people">Faculty &amp; Staff</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#students">Student Work</a>
+  </nav>
+</div>
+
+<!-- ================= PEOPLE ================= -->
+<section class="major" id="people">
+  <p class="sec-num">01 — The department</p>
+  <h2>Faculty &amp; Staff</h2>
+
+  <div class="subgroup" id="leadership">
+    <h3>Leadership &amp; Staff</h3>
+    <div class="staff-grid">
+      <div class="staff-card" data-search="scott paulson interim academic unit head leadership"><div class="portrait"><img src="headshots/Scott_Paulson.png" alt="Scott Paulson" loading="lazy"></div><span class="name">Scott Paulson</span><span class="role">Interim Academic Unit Head</span></div>
+      <div class="staff-card" data-search="laresa roberts office manager staff"><div class="portrait"><img src="headshots/Laresa_Roberts.jpg" alt="Laresa Roberts" loading="lazy"></div><span class="name">Laresa Roberts</span><span class="role">Office Manager</span></div>
+      <div class="staff-card" data-search="fasha strange fiscal tech staff"><div class="portrait"><img src="headshots/Fasha_Strange.jpg" alt="Fasha Strange" loading="lazy"></div><span class="name">Fasha Strange</span><span class="role">Fiscal Tech</span></div>
+      <div class="staff-card" data-search="megan holland academic advisor staff"><div class="portrait"><img src="headshots/Megan_Holland.png" alt="Megan Holland" loading="lazy"></div><span class="name">Megan Holland</span><span class="role">Academic Advisor</span></div>
+      <div class="staff-card" data-search="scott padgett lab studio technician staff"><div class="portrait"><img src="headshots/Scott_Padgett.jpg" alt="Scott Padgett" loading="lazy"></div><span class="name">Scott Padgett</span><span class="role">Lab/Studio Technician</span></div>
+      <div class="staff-card" data-search="scott weeks engineering technician staff"><div class="portrait"><img src="headshots/Scott_Weeks.jpg" alt="Scott Weeks" loading="lazy"></div><span class="name">Scott Weeks</span><span class="role">Engineering Technician</span></div>
+      <div class="staff-card" data-search="john wild laboratory manager staff"><div class="portrait"><img src="headshots/John_Wild.jpg" alt="John Wild" loading="lazy"></div><span class="name">John Wild</span><span class="role">Laboratory Manager</span></div>
+    </div>
+  </div>
+
+  <div class="subgroup" id="mechanical">
+    <h3>Mechanical &amp; Aerospace Faculty</h3>
+    <div class="person" data-search="karim altaii professor mechanical fluid thermal renewable energy hvac instrumentation isat">
+      <div class="portrait"><img src="headshots/Karim_Altaii.jpg" alt="Karim Altaii" loading="lazy"></div>
+      <div class="who"><p class="name">Karim Altaii</p><p class="title">Professor</p><p class="credential">Ph.D. Mechanical Engineering — CUNY</p><p class="flag">H</p></div>
+    </div>
+    <div class="person" data-search="johnathon barbish assistant professor mechanical thermodynamics mems nems insect flight reduced order engineering education">
+      <div class="portrait"><img src="headshots/Johnathon_Barbish.jpg" alt="Johnathon Barbish" loading="lazy"></div>
+      <div class="who"><p class="name">Johnathon Barbish</p><p class="title">Assistant Professor</p><p class="credential">Ph.D. Mechanical Engineering — Virginia Tech, 2023</p></div>
+    </div>
+    <div class="person" data-search="kyle gipson professor polymer fiber materials amorphous nanoparticles optical fiber melt extrusion teams education access">
+      <div class="portrait"><img src="headshots/Kyle_Gipson.jpg" alt="Kyle Gipson" loading="lazy"></div>
+      <div class="who"><p class="name">Kyle Gipson</p><p class="title">Professor</p><p class="credential">Ph.D. Polymer &amp; Fiber Science — Clemson, 2011</p></div>
+    </div>
+    <div class="person" data-search="keith holland professor aerospace optoelectronic sensing gas fault detection renewable energy wind solar non-destructive inspection research vice provost">
+      <div class="portrait"><img src="headshots/Keith_Holland.jpg" alt="Keith Holland" loading="lazy"></div>
+      <div class="who"><p class="name">Keith Holland</p><p class="title">Professor · Associate Vice Provost for Research and Scholarship</p><p class="credential">Ph.D. Mechanical &amp; Aerospace Engineering — UVA, 2004</p></div>
+    </div>
+    <div class="person" data-search="robert rob prins professor mechanical electro-mechanical concentration vehicle lithium ion 3d printed materials testing shell eco-marathon industry partnerships">
+      <div class="portrait"><img src="headshots/Robert_Prins.jpg" alt="Robert Prins" loading="lazy"></div>
+      <div class="who"><p class="name">Robert Prins</p><p class="title">Professor</p><p class="credential">Ph.D. Mechanical Engineering — Virginia Tech, 2005</p><p class="flag"></p></div>
+    </div>
+    <div class="person" data-search="cuneyt yalcin visiting lecturer mechanical manufacturing automation milling geometric modeling control systems">
+      <div class="portrait"><img src="headshots/Cuneyt_Yalcin.jpg" alt="Cuneyt Yalcin" loading="lazy"></div>
+      <div class="who"><p class="name">Cuneyt Yalcin</p><p class="title">Visiting Lecturer</p><p class="credential">Ph.D. Mechanical Engineering — University of New Hampshire, 2009</p></div>
+    </div>
+  </div>
+
+  <div class="subgroup" id="civil">
+    <h3>Civil, Environmental &amp; Structural Faculty</h3>
+    <div class="person" data-search="daniel castaneda associate professor program director civil infrastructure instrumentation portland cement concrete citizen science blended pedagogy">
+      <div class="portrait"><img src="headshots/Daniel_Castaneda.jpg" alt="Daniel Castaneda" loading="lazy"></div>
+      <div class="who"><p class="name">Daniel Castaneda</p><p class="title">Associate Professor · Program Director</p><p class="credential">Ph.D. Civil Engineering — UIUC, 2016</p></div>
+    </div>
+    <div class="person" data-search="heather kirkvold associate professor civil bridge deck testing concrete durability construction soundwall infrastructure planning first year experience pbl">
+      <div class="portrait"><img src="headshots/Heather_Kirkvold.jpg" alt="Heather Kirkvold" loading="lazy"></div>
+      <div class="who"><p class="name">Heather Kirkvold</p><p class="title">Associate Professor</p><p class="credential">Ph.D. Civil Engineering — University of Kansas, 2009</p></div>
+    </div>
+    <div class="person" data-search="pedro puente assistant professor environmental anaerobic digestion resource recovery food waste sludge life cycle techno economic landfill carbon">
+      <div class="portrait"><img src="headshots/Pedro_Puente.jpg" alt="Pedro Puente" loading="lazy"></div>
+      <div class="who"><p class="name">Pedro Puente</p><p class="title">Assistant Professor</p><p class="credential">Ph.D. Environmental Engineering — University of Michigan, 2025</p></div>
+    </div>
+    <div class="person" data-search="bradley striebig professor academic advisor environmental sustainable design esg restoration biological treatment engineering ethics">
+      <div class="portrait"><img src="headshots/Bradley_Striebig.jpg" alt="Bradley Striebig" loading="lazy"></div>
+      <div class="who"><p class="name">Bradley Striebig</p><p class="title">Professor · Academic Advisor</p><p class="credential">Ph.D. Environmental Engineering — Penn State, 1996</p></div>
+    </div>
+    <div class="person" data-search="steven woodruff assistant professor civil structural origami curved crease mechanisms acoustic control nasa rocketry advisor">
+      <div class="portrait"><img src="headshots/Steven_Woodruff.jpg" alt="Steven Woodruff" loading="lazy"></div>
+      <div class="who"><p class="name">Steven Woodruff</p><p class="title">Assistant Professor</p><p class="credential">Ph.D. Civil Engineering — University of Michigan, 2022</p></div>
+    </div>
+  </div>
+
+  <div class="subgroup" id="electrical">
+    <h3>Electrical &amp; Computer Faculty</h3>
+    <div class="person" data-search="jason forsyth associate professor computer engineering wearable computing computational numismatics digital humanities">
+      <div class="portrait"><img src="headshots/Jason_Forsyth.jpg" alt="Jason Forsyth" loading="lazy"></div>
+      <div class="who"><p class="name">Jason Forsyth</p><p class="title">Associate Professor</p><p class="credential">Ph.D. Computer Engineering — Virginia Tech, 2015</p></div>
+    </div>
+    <div class="person" data-search="ceylan morgul visiting assistant professor lecturer electrical reliability integrated circuits processing in memory ai hardware eda vlsi asic fpga">
+      <div class="portrait"><img src="headshots/M__Ceylan_Morgul.png" alt="M. Ceylan Morgul" loading="lazy"></div>
+      <div class="who"><p class="name">M. Ceylan Morgul</p><p class="title">Visiting Assistant Professor</p><p class="credential">Ph.D. Electrical Engineering — UVA, 2025</p></div>
+    </div>
+    <div class="person" data-search="steven harper professor systems entrepreneurial management of technology innovation knowledge management decision analysis">
+      <div class="portrait"><img src="headshots/Steven_Harper.jpg" alt="Steven Harper" loading="lazy"></div>
+      <div class="who"><p class="name">Steven Harper</p><p class="title">Professor</p><p class="credential">Ph.D. Systems &amp; Entrepreneurial Engineering — Illinois, 2006</p></div>
+    </div>
+  </div>
+
+  <div class="subgroup" id="chemical">
+    <h3>Chemical Faculty</h3>
+    <div class="person" data-search="brent cunningham assistant professor of practice macromolecular chemical fluid mechanics energy polymer science chemistry">
+      <div class="portrait"><img src="headshots/Brent_Cunningham.jpg" alt="Brent Cunningham" loading="lazy"></div>
+      <div class="who"><p class="name">Brent Cunningham</p><p class="title">Assistant Professor of Practice</p><p class="credential">Ph.D. Macromolecular Science &amp; Engineering — Virginia Tech</p></div>
+    </div>
+    <div class="person" data-search="samuel morton professor program director chemical green engineering separations ionic liquid bioenergy carbon capture microalgae lignin brewery distillery">
+      <div class="portrait"><img src="headshots/Samuel_Morton.jpg" alt="Samuel Morton" loading="lazy"></div>
+      <div class="who"><p class="name">Samuel Morton</p><p class="title">Professor · Program Director</p><p class="credential">Ph.D. Chemical Engineering — University of Tennessee, 2004</p></div>
+    </div>
+  </div>
+
+  <div class="subgroup" id="design">
+    <h3>Design, Systems &amp; Engineering Education Faculty</h3>
+    <div class="person" data-search="shraddha joshi associate professor assistant department head mechanical design theory methodology creativity requirements product design iot connected products engineering education">
+      <div class="portrait"><img src="headshots/Shraddha_Joshi.jpg" alt="Shraddha Joshi" loading="lazy"></div>
+      <div class="who"><p class="name">Shraddha Joshi</p><p class="title">Associate Professor · Assistant Department Head</p><p class="credential">Ph.D. Mechanical Engineering — Clemson, 2013</p></div>
+    </div>
+    <div class="person" data-search="christine toh assistant professor industrial design theories methods philosophy intellectual traditions">
+      <div class="portrait"><img src="headshots/Christine_Toh.png" alt="Christine Toh" loading="lazy"></div>
+      <div class="who"><p class="name">Christine Toh</p><p class="title">Assistant Professor</p><p class="credential">Ph.D. Industrial Engineering — Penn State</p></div>
+    </div>
+  </div>
+
+
+  <p id="no-results">No one matches that filter.</p>
+</section>
+
+<!-- ================= CURRICULUM ================= -->
+<section class="major" id="curriculum">
+  <p class="sec-num">02 — The program</p>
+  <h2>Curriculum</h2>
+  <p class="sec-intro">One ABET-accredited B.S. in Engineering — 129 credits — combining a 42-credit engineering core with math &amp; science, a seven-credit practicum-through-capstone spine (Practicum I &rarr; Practicum II/Project I &rarr; Practicum III/Project II &rarr; Capstone) that produces the work in the next section, and 15 credits of electives that can be taken freely or assembled into one of three named concentrations — Civil &amp; Environmental Systems, Geo-Environmental Systems, or Electro-Mechanical Systems. Full admission to the major is a competitive gate at the sophomore level, built on four prerequisite courses and a written statement.</p>
+
+  <figure class="curriculum-figure">
+    <img id="curriculumMapImg" src="curriculum-map.png" >
+    
+  </figure>
+
+  
+</section>
+
+<!-- ================= STUDENTS ================= -->
+<section class="major" id="students">
+  <p class="sec-num">03 — The proof</p>
+  <h2>Student Work</h2>
+  <p class="sec-intro">What comes out the other end of that practicum-to-capstone spine — competitions won, devices built, and a public showcase every spring.</p>
+
+  <div class="feature" id="nasa">
+    <p class="feature-eyebrow">NASA Student Launch · 2024–25 season · Project Vulcan I</p>
+    <h3>First place overall, out of 50+ university teams</h3>
+    <p class="meta">Launched May 4, 2025, Huntsville, AL · winners announced June 13, 2025 · <a href="https://www.jmu.edu/news/cise/2025/07-21-engineering-nasa-student-win.shtml" target="_blank" rel="noopener">jmu.edu/news, Jul 21, 2025</a></p>
+    <div class="photo-rail">
+      <div class="photo-slot">
+        <img src="student-photos/nasa-vulcan-team.jpg" alt="Project Vulcan I team with the rocket on the pad, Huntsville, AL — May 2025" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Project Vulcan I team with the rocket on the pad, Huntsville, AL — May 2025</p></div>
+      </div>
+      <div class="photo-slot">
+        <img src="student-photos/nasa-vulcan-payload.jpg" alt="Launch or recovery shot / close-up of the Lego-astronaut payload" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Launch or recovery shot / close-up of the Lego-astronaut payload</p></div>
+      </div>
+    </div>
+    <div class="stats-row"><span class="pill">1st overall · 50+ teams</span><span class="pill">1st, AIAA Payload Innovation</span><span class="pill">2nd, AIAA Reusable Launch Vehicle</span></div>
+    <p class="body">An eight-student team built a full-scale rocket with integrated avionics, a recovery system, and a spacecraft-inspired payload carrying Lego astronauts — then took first place overall against more than 50 university teams at NASA's Student Launch, plus two additional AIAA awards.</p>
+    <p class="roster"><span class="roster-label">Team:</span>Josiah Walker · Owen Bailey · Grant Whitlow · Matthew Smith · Ethan Specht · Thomas Vancil · Lily DeBruycker · Katelyn Marshall</p>
+    <blockquote class="pull"><p>"We all chose this challenging capstone to develop new skills and prove that JMU engineers could be competitive."</p><cite>— Josiah Walker, team member</cite></blockquote>
+    <blockquote class="pull"><p>"Their dedication, creativity and perseverance exemplify the very best of our program."</p><cite>— Dr. Steven Woodruff, faculty advisor</cite></blockquote>
+  </div>
+
+  <div class="feature">
+    <p class="feature-eyebrow">NASA Student Launch · 2025–26 season · Sirius I</p>
+    <h3>Ninth overall — and a rocket that survived a 4,000-foot drop</h3>
+    <p class="meta">Nine-month build, 2025–26 season · <a href="https://www.jmu.edu/news/cise/2026/08-27-beyond-the-rocket.shtml" target="_blank" rel="noopener">jmu.edu/news, Aug 27, 2026</a></p>
+    <div class="photo-rail single">
+      <div class="photo-slot">
+        <img src="student-photos/nasa-sirius-team.jpg" alt="Sirius I team during build/testing, or on the launch pad" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Sirius I team during build/testing, or on the launch pad</p></div>
+      </div>
+    </div>
+    <div class="stats-row"><span class="pill">9th overall</span><span class="pill">AIAA Reusable Launch Vehicle Award</span></div>
+    <p class="body">The following year's team built Sirius I, a fiberglass high-power rocket with a triple-deployment recovery system and an extra parachute to stabilize an unusually heavy nose cone. During testing the rocket survived an unplanned 4,000-foot drop — though the article's real subject is less the rocket than what the team learned finishing a nine-month build: trust, communication, and working through setbacks under a hard deadline.</p>
+    <p class="roster"><span class="roster-label">Team, as named in the article:</span>Chuck Neff · Jake Kozura · Kimberly Carter '26 (avionics/recovery lead) · Zach Morse · Gabe Rohrbach '26 (structures lead) · Jackson Lambert '26 (outreach lead) · Gino Fontana · Valentina Paz Soldan · Josh Powell · James Carsner</p>
+    <blockquote class="pull"><p>"The most important part about working in a team is open and honest conversations."</p><cite>— Kimberly Carter, avionics/recovery lead</cite></blockquote>
+    <blockquote class="pull"><p>"I learned that you need to trust your team."</p><cite>— Gabe Rohrbach, structures lead</cite></blockquote>
+    <p class="footnote">Note for review: a "Chuck Neff" is named as a student on the Sirius I roster in this article, but the July 2025 Vulcan I article separately credits a "Chuck Neff" as Valley Aerospace Team president and outside mentor to that earlier team. Confirm with the department before this name goes on anything printed.</p>
+  </div>
+
+  <div class="feature" id="xchange">
+    <p class="feature-eyebrow">Engineering xChange &amp; the CISE Student Showcase · Apr 17–18, 2026</p>
+    <h3>100+ projects, seven disciplines, one open house</h3>
+    <p class="meta">King Hall &amp; the Engineering/Geosciences Building, JMU campus · <a href="https://www.jmu.edu/news/cise/2026/04-24-cise-student-showcase.shtml" target="_blank" rel="noopener">jmu.edu/news, Apr 24, 2026</a> · <a href="https://www.instagram.com/jmuengineering/p/DW40IQADTdR/" target="_blank" rel="noopener">@jmuengineering, Apr 8, 2026</a></p>
+    <div class="photo-rail">
+      <div class="photo-slot">
+        <img src="student-photos/xchange-showcase-floor.jpg" alt="Showcase floor — posters, demo tables, a crowd of visitors" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Showcase floor — posters, demo tables, a crowd of visitors</p></div>
+      </div>
+      <div class="photo-slot">
+        <img src="student-photos/xchange-student-demo.jpg" alt="A student presenting or demoing a specific build" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">A student presenting or demoing a specific build (rocketry team or DUKEsat are good candidates)</p></div>
+      </div>
+    </div>
+    <div class="stats-row"><span class="pill">100+ projects</span><span class="pill">7 CISE disciplines</span></div>
+    <p class="body">Every spring, students across Biotechnology, Computer Science, Engineering, Geography, Information Technology, Intelligence Analysis, and ISAT put a year of work on the table — posters, live demos, and interactive exhibits, open to faculty, industry partners, and the community. On the engineering side, projects named in the recap include the biomedical back-pain device below, a drone-based emergency-response system, a portable solar-powered water purifier for disaster relief, a steel bridge project, the rocketry team's work, a theatre lift prototype, and the DUKEsat capstone.</p>
+    <blockquote class="pull"><p>"They're not just completing an assignment. They're creating something that could be used outside the classroom."</p><cite>— Jeff Tang, interim dean, CISE</cite></blockquote>
+    <p class="footnote">Note for review: it isn't confirmed from the source material whether "Engineering xChange" is the department's name for its slice of the CISE-wide showcase or a separate but adjacent event. Presented together here, not merged into a single claim, pending one line of confirmation from the department.</p>
+  </div>
+
+  <div class="feature" id="banquet">
+    <p class="feature-eyebrow">Senior Banquet &amp; Order of the Engineer · Jun 17, 2026</p>
+    <h3>Graduating seniors take the Order of the Engineer oath</h3>
+    <p class="meta"><a href="https://www.instagram.com/jmuengineering/p/DZtFRUcCVAM/" target="_blank" rel="noopener">@jmuengineering, Jun 17, 2026</a></p>
+    <div class="photo-rail">
+      <div class="photo-slot">
+        <img src="student-photos/banquet-ring-ceremony.jpg" alt="Ring ceremony / oath moment at the Senior Banquet" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Ring ceremony / oath moment at the Senior Banquet</p></div>
+      </div>
+      <div class="photo-slot">
+        <img src="student-photos/banquet-award-recipients.jpg" alt="Award recipients on stage, or a group shot of the Class of 2026" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
+        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Award recipients on stage, or a group shot of the Class of 2026</p></div>
+      </div>
+    </div>
+    <p class="body">As the academic year closed, JMU Engineering gathered graduating seniors for the Senior Banquet and Awards Ceremony. A highlight was the induction of graduating seniors into the Order of the Engineer: students took an oath affirming their commitment to the responsibilities of the profession and to public safety and well-being, and each received an Engineer's Ring as a symbol of that obligation.</p>
+    <p class="roster"><span class="roster-label">2026 student award recipients:</span>Aiden Gammache — Excellence in Academic Achievement &amp; Madison Engineer Award · Julia Larson — Excellence in Scholarly Success · Sydney Witcher &amp; Brady Lane — Excellence in Leadership · Michael Glover — Engineering Department Head Award</p>
+  </div>
+
+  <div class="feature">
+    <p class="feature-eyebrow">One to watch · @jmuengineering, May 22, 2026</p>
+    <h3>Aiden Gammache — 4.0 GPA, straight into the field</h3>
+    <p class="meta"><a href="https://www.instagram.com/jmuengineering/p/DYpon-zp9rI/" target="_blank" rel="noopener">@jmuengineering, May 22, 2026</a></p>
+    <p class="body">Aiden Gammache graduated as CISE valedictorian and JMU co-valedictorian with a 4.0 GPA, and went straight into a Water Resources Engineer role at AMT Engineering, working on infrastructure and environmental-restoration projects in the D.C./Maryland/Virginia area.</p>
+  </div>
+
+  <div class="feature" id="more">
+    <p class="feature-eyebrow">More student work</p>
+    <h3>Four more, one line each</h3>
+    <div class="more-card">
+      <div><p class="what">Portable back-pain relief devices</p><p class="when">Jun 17, 2026</p></div>
+      <div class="desc"><p>Two capstone teams advised by Dr. Karim Altaii each built a portable spinal-traction device as an alternative to bulky clinic equipment — a pneumatic traction chair and a mechanical crank-driven design — and presented both at the 2026 Systems and Information Engineering Design Symposium at UVA. "The best part was the freedom — being given a problem and designing a solution from scratch." — Marvin Fuentes, team lead.</p><a href="https://www.jmu.edu/news/cise/2026/06-17-engineering-back-pain-relief.shtml" target="_blank" rel="noopener">jmu.edu/news →</a></div>
+    </div>
+    <div class="more-card">
+      <div><p class="what">An accessible path to the ocean</p><p class="when">Jul 2025 · published Sep 17, 2025</p></div>
+      <div class="desc"><p>Engineering and ISAT students partnered with Punta Leona Beach Club and Nature Resort in Costa Rica to design a beach wheelchair — PVC frame, oversized sand wheels, breathable mesh seating — built to be locally maintainable and reproducible, plus a lighter three-wheel second prototype. "This wasn't just a prototype anymore — it was real." — Daniel Turner, team member.</p><a href="https://www.jmu.edu/news/cise/2025/09-17-students-engineer-accessible-path-to-ocean.shtml" target="_blank" rel="noopener">jmu.edu/news →</a></div>
+    </div>
+    <div class="more-card">
+      <div><p class="what">MANTECH industry partnership</p><p class="when">Published Dec 5, 2025</p></div>
+      <div class="desc"><p>Defense contractor MANTECH sponsors engineering capstone projects (including a "Drone Accelerator" project), hosts facility tours and resume-review sessions, and recruits directly out of capstone work. "Capstone projects offer opportunities to mentor and evaluate students over sustained periods — relationships that often lead directly to hiring." — Chris Troughton, MANTECH Academic Engagement Lead.</p><a href="https://www.jmu.edu/news/cise/2025/12-05-connecting-students-and-industry.shtml" target="_blank" rel="noopener">jmu.edu/news →</a></div>
+    </div>
+    <div class="more-card">
+      <div><p class="what">Student voice on video</p><p class="when">Reel, May 5, 2026</p></div>
+      <div class="desc"><p>A short reel of sophomore Ryan Short talking about why he wants to "get everyone just as excited as he is about engineering" — the one piece of raw, first-person student video in the recent feed. Worth reusing the format even if not this specific clip.</p><a href="https://www.instagram.com/jmucise/reel/DX9Xq9vsX8G/" target="_blank" rel="noopener">instagram.com/jmucise →</a></div>
+    </div>
+  </div>
+</section>
+
+
+</div>
+
+<div class="lightbox" id="curriculumLightbox" role="dialog" aria-modal="true" aria-label="Curriculum map, enlarged">
+  <span class="lightbox-hint">Click anywhere, or press Esc, to close</span>
+  <button class="lightbox-close" type="button">Close &times;</button>
+  <img src="curriculum-map.png" alt="JMU Engineering B.S. curriculum map, enlarged to full resolution">
+</div>
+
+<script>
+  const filterInput = document.getElementById('filter');
+  const people = Array.from(document.querySelectorAll('.person, .staff-card'));
+  const groups = Array.from(document.querySelectorAll('.subgroup'));
+  const noResults = document.getElementById('no-results');
+
+  if (filterInput) {
+    filterInput.addEventListener('input', () => {
+      const q = filterInput.value.trim().toLowerCase();
+      people.forEach(p => {
+        const hay = p.dataset.search || '';
+        p.classList.toggle('is-hidden', !(q === '' || hay.includes(q)));
+      });
+      let anyVisible = false;
+      groups.forEach(g => {
+        const rows = g.querySelectorAll('.person, .staff-card');
+        const visible = Array.from(rows).filter(r => !r.classList.contains('is-hidden')).length;
+        const hide = rows.length > 0 && visible === 0;
+        g.classList.toggle('is-hidden', hide);
+        if (!hide) anyVisible = true;
+      });
+      noResults.style.display = anyVisible ? 'none' : 'block';
+    });
+  }
+
+  const curriculumImg = document.getElementById('curriculumMapImg');
+  const lightbox = document.getElementById('curriculumLightbox');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  function openLightbox() {
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  curriculumImg.addEventListener('click', openLightbox);
+  lightbox.addEventListener('click', closeLightbox);
+  lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+</script>
+</body>
+</html>

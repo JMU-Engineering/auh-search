@@ -1,0 +1,11 @@
+# One row per photo slot on student-showcase.html.
+# Format: filename|section|caption|source_post_url
+# Drop a file using the exact filename below into this folder and it will
+# replace the dashed placeholder on next page load — no HTML edit needed.
+nasa-vulcan-team.jpg|NASA Student Launch|Project Vulcan I team with the rocket on the pad, Huntsville, AL — May 2025|https://www.jmu.edu/news/cise/2025/07-21-engineering-nasa-student-win.shtml
+nasa-vulcan-payload.jpg|NASA Student Launch|Launch or recovery shot / close-up of the Lego-astronaut payload|https://www.jmu.edu/news/cise/2025/07-21-engineering-nasa-student-win.shtml
+nasa-sirius-team.jpg|NASA Student Launch|Sirius I team during build/testing, or on the launch pad|https://www.jmu.edu/news/cise/2026/08-27-beyond-the-rocket.shtml
+xchange-showcase-floor.jpg|Engineering xChange & CISE Showcase|Showcase floor — posters, demo tables, a crowd of visitors|https://www.jmu.edu/news/cise/2026/04-24-cise-student-showcase.shtml
+xchange-student-demo.jpg|Engineering xChange & CISE Showcase|A student presenting or demoing a specific build (rocketry team or DUKEsat are good candidates)|https://www.jmu.edu/news/cise/2026/04-24-cise-student-showcase.shtml
+banquet-ring-ceremony.jpg|Senior Banquet & Order of the Engineer|Ring ceremony / oath moment at the Senior Banquet|https://www.instagram.com/jmuengineering/p/DZtFRUcCVAM/
+banquet-award-recipients.jpg|Senior Banquet & Order of the Engineer|Award recipients on stage, or a group shot of the Class of 2026|https://www.instagram.com/jmuengineering/p/DZtFRUcCVAM/
