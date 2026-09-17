@@ -24,7 +24,7 @@
   /* hero */
   header.hero{padding:78px 0 42px;border-bottom:1px solid var(--rule)}
   .kicker{font-size:14px;color:var(--ink-soft);margin:0 0 14px}
-  h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(38px,6.2vw,56px);line-height:1.05;margin:0 0 18px;letter-spacing:-.01em;max-width:20ch}
+  h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(38px,6.2vw,56px);line-height:1.05;margin:0 0 18px;letter-spacing:-.01em}
   .dek{font-size:17px;color:var(--ink-soft);max-width:none;margin:0 0 22px}
   .stat-line{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-faint);margin:0}
 
@@ -40,9 +40,8 @@
   .feature[id]{scroll-margin-top:88px}
   .sec-num{font-family:var(--font-mono);font-size:12px;color:var(--rust);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
   section.major > h2{font-family:var(--font-serif);font-weight:700;font-size:clamp(28px,4vw,36px);margin:0 0 10px}
-  .sec-intro{font-size:16px;color:var(--ink-soft);max-width:66ch;margin:0 0 8px}
-  #curriculum .sec-intro{max-width:none}
-  .sec-note{font-size:13px;color:var(--ink-faint);max-width:70ch;margin:14px 0 0;padding:10px 12px;background:var(--paper-raised);border-left:2px solid var(--rule)}
+  .sec-intro{font-size:16px;color:var(--ink-soft);margin:0 0 8px}
+  .sec-note{font-size:13px;color:var(--ink-faint);margin:14px 0 0;padding:10px 12px;background:var(--paper-raised);border-left:2px solid var(--rule)}
 
   /* faculty */
   #filter{width:100%;max-width:420px;font-family:var(--font-sans);font-size:15px;color:var(--ink);background:var(--paper-raised);border:none;border-bottom:1px solid var(--ink-faint);padding:9px 4px;margin:26px 0 4px}
@@ -50,7 +49,7 @@
   .subgroup{padding:34px 0 4px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:26px 22px}
   .subgroup.is-hidden{display:none}
   .subgroup h3{grid-column:1/-1;font-family:var(--font-serif);font-weight:500;font-size:22px;margin:0 0 4px}
-  .subgroup .group-note{grid-column:1/-1;font-size:13.5px;color:var(--ink-faint);margin:0 0 8px;max-width:64ch}
+  .subgroup .group-note{grid-column:1/-1;font-size:13.5px;color:var(--ink-faint);margin:0 0 8px}
   .person{display:flex;flex-direction:column}
   .person.is-hidden{display:none}
   .portrait{width:100%;height:auto;aspect-ratio:1/1;border-radius:2px;overflow:hidden;background:var(--paper-raised);border:1px solid var(--rule);margin-bottom:10px}
@@ -81,30 +80,47 @@
   .lightbox-hint{position:fixed;top:22px;left:28px;font-family:var(--font-mono);font-size:11.5px;color:rgba(255,255,255,.6);letter-spacing:.03em}
   @media (max-width:640px){.lightbox-hint{display:none}}
 
-  /* student work */
+  /* student experiences */
   .feature{padding:10px 0 42px}
   .feature+.feature{border-top:1px solid var(--rule);padding-top:38px}
   .feature-eyebrow{font-family:var(--font-mono);font-size:12px;color:var(--rust);text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px}
-  .feature h3{font-family:var(--font-serif);font-weight:500;font-size:23px;margin:0 0 10px;max-width:32ch}
+  .subsection-head{font-family:var(--font-serif);font-weight:700;font-size:21px;margin:38px 0 6px;color:var(--ink)}
+  .subsection:first-of-type .subsection-head, h2+p+.subsection-head{margin-top:8px}
+  .feature h4{font-family:var(--font-serif);font-weight:500;font-size:23px;margin:0 0 14px}
+  .content-slot{border:1px dashed var(--ink-faint);background:var(--paper-raised);border-radius:2px;padding:20px 22px;margin:8px 0 30px}
+  .content-slot .slot-mark{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);text-transform:uppercase;display:inline-block;border:1px solid var(--rule);padding:2px 6px;border-radius:2px;margin-bottom:8px}
+  .content-slot p{font-size:14px;color:var(--ink-soft);margin:0}
   .feature .meta{font-size:13.5px;color:var(--ink-faint);margin:0 0 20px}
   .feature .meta a{color:var(--ink-soft)}
+  .feature-row{display:flex;gap:28px;align-items:flex-start;margin:0 0 4px}
+  .feature-photo{flex:0 0 260px;width:260px}
+  .feature-photo img{width:100%;height:150px;object-fit:cover;object-position:center 25%;border-radius:2px;border:1px solid var(--rule);display:block;cursor:zoom-in}
+  #research .feature-photo img{height:220px;object-position:top}
+  #banquet .feature-photo img{height:220px;object-position:top}
+  .feature-photo .photo-stack{display:flex;flex-direction:column;gap:10px;height:100%}
+  .feature-photo .photo-stack img{height:200px}
+  .feature-text{flex:1;min-width:0}
   .photo-rail{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
   .photo-rail.single{grid-template-columns:1fr}
   .photo-slot{position:relative;overflow:hidden;border:1px dashed var(--ink-faint);background:var(--paper-raised);border-radius:2px;padding:18px 16px;min-height:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+  .feature-photo .photo-slot{min-height:150px}
   .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .photo-slot .ph-fallback{position:relative;display:flex;flex-direction:column;gap:6px}
   .photo-slot .ph-mark{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);text-transform:uppercase;align-self:flex-start;border:1px solid var(--rule);padding:2px 6px;border-radius:2px}
   .photo-slot .ph-caption{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.4}
   @media (max-width:640px){.photo-rail{grid-template-columns:1fr}}
+  @media (max-width:680px){.feature-row{flex-direction:column}.feature-photo{width:100%;flex:none}.feature-photo img{height:auto;aspect-ratio:16/10}.feature-photo .photo-stack{height:auto}.feature-photo .photo-stack img{height:auto;aspect-ratio:16/10}}
   .stats-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
   .pill{font-family:var(--font-mono);font-size:12px;color:var(--blue);border:1px solid var(--blue);border-radius:20px;padding:4px 12px;white-space:nowrap}
-  .feature p.body{font-size:15.5px;margin:0 0 16px;max-width:68ch}
-  blockquote.pull{margin:20px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rust);max-width:58ch}
+  .feature p.body{font-size:15.5px;margin:0 0 16px;max-width:none}
+  blockquote.pull{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rust);max-width:none}
   blockquote.pull p{font-family:var(--font-serif);font-size:17px;font-style:italic;margin:0 0 6px}
   blockquote.pull cite{font-family:var(--font-mono);font-style:normal;font-size:12.5px;color:var(--ink-faint)}
-  .roster{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px;max-width:70ch}
+  .roster{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px;max-width:none}
   .roster .roster-label{color:var(--ink-faint);display:block;margin-bottom:4px}
-  .footnote{font-size:12.5px;color:var(--ink-faint);max-width:66ch;margin:14px 0 0;padding:10px 12px;background:var(--paper-raised);border-left:2px solid var(--rule)}
+  .readmore{font-size:14px;margin:14px 0 0}
+  .readmore a{color:var(--blue)}
+  .footnote{font-size:12.5px;color:var(--ink-faint);margin:14px 0 0;padding:10px 12px;background:var(--paper-raised);border-left:2px solid var(--rule)}
   .more-card{display:grid;grid-template-columns:220px 1fr;gap:6px 28px;padding:22px 0;border-top:1px solid var(--rule)}
   .more-card .what{font-family:var(--font-serif);font-size:18px;font-weight:500;margin:0 0 4px}
   .more-card .when{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint)}
@@ -120,17 +136,19 @@
 <header class="hero">
   <p class="kicker">James Madison University · Department of Engineering</p>
   <h1>Department Head and Endowed Faculty Chair, Department of Engineering, James Madison University</h1>
-  <p class="dek">James Madison University (JMU) invites applications for the position of Department Head and Endowed Faculty Chair of Engineering. This is a tenured, 12-month appointment at the rank of Professor or Associate Professor. A recent $1.5 million gift establishing the endowed chair provides significant resources and flexibility for the Department Head to pursue a broad range of initiatives aligned with the Department’s needs, opportunities, and the successful candidate’s interests. </p>
+  <p class="dek"><b>James Madison University (JMU) invites applications for the position of Department Head and Endowed Faculty Chair of Engineering. This is a tenured, 12-month appointment at the rank of Professor or Associate Professor. A recent $1.5 million gift establishing the endowed chair provides significant resources and flexibility for the Department Head to pursue a broad range of initiatives aligned with the Department’s needs, opportunities, and the successful candidate’s interests.</b> </p>
 
 <p>Our ABET-accredited Department of Engineering consists of 18 instructional faculty and 6 staff members serving approximately 750 students, with about 120 graduates each year. The Department offers a B.S. in Engineering, and students may choose to pursue concentrations in Electro-Mechanical Systems, Geo-Environmental Systems, or Civil & Environmental Systems. As an undergraduate-focused engineering program within a large public university, we combine the close faculty-student interaction and small class sizes often associated with smaller programs with substantial facilities, staffing, and resources. Our project-based curriculum gives students significant responsibility for their own work in courses, laboratories, research, and design projects, creating a highly hands-on learning environment. Students have access to a fully staffed machine shop, fabrication laboratory, digital prototyping facilities, and dedicated capstone and project workspaces. Research, project, and instructional infrastructure includes more than $2 million in tools, instrumentation, and equipment located in over 30,000 square feet of dedicated engineering laboratory, fabrication, research, and project space.
   </p>
+
+  <p>Please use this space to our people, curriculum, and student experiences.</p>
 </header>
 
 <div class="controls">
   <nav class="jump">
     <a href="#people">Faculty &amp; Staff</a>
     <a href="#curriculum">Curriculum</a>
-    <a href="#students">Student Work</a>
+    <a href="#students">Student Experiences</a>
   </nav>
 </div>
 
@@ -182,9 +200,9 @@
 
   <div class="subgroup" id="civil">
     <h3>Civil, Environmental &amp; Structural Faculty</h3>
-    <div class="person" data-search="daniel castaneda associate professor program director civil infrastructure instrumentation portland cement concrete citizen science blended pedagogy">
+    <div class="person" data-search="daniel castaneda associate professor civil infrastructure instrumentation portland cement concrete citizen science blended pedagogy">
       <div class="portrait"><img src="headshots/Daniel_Castaneda.jpg" alt="Daniel Castaneda" loading="lazy"></div>
-      <div class="who"><p class="name">Daniel Castaneda</p><p class="title">Associate Professor · Program Director</p><p class="credential">Ph.D. Civil Engineering — UIUC, 2016</p></div>
+      <div class="who"><p class="name">Daniel Castaneda</p><p class="title">Associate Professor</p><p class="credential">Ph.D. Civil Engineering — UIUC, 2016</p></div>
     </div>
     <div class="person" data-search="heather kirkvold associate professor civil bridge deck testing concrete durability construction soundwall infrastructure planning first year experience pbl">
       <div class="portrait"><img src="headshots/Heather_Kirkvold.jpg" alt="Heather Kirkvold" loading="lazy"></div>
@@ -252,10 +270,10 @@
 <section class="major" id="curriculum">
   <p class="sec-num">02 — The program</p>
   <h2>Curriculum</h2>
-  <p class="sec-intro">One ABET-accredited B.S. in Engineering — 129 credits — combining a 42-credit engineering core with math &amp; science, a seven-credit practicum-through-capstone spine (Practicum I &rarr; Practicum II/Project I &rarr; Practicum III/Project II &rarr; Capstone) that produces the work in the next section, and 15 credits of electives that can be taken freely or assembled into one of three named concentrations — Civil &amp; Environmental Systems, Geo-Environmental Systems, or Electro-Mechanical Systems. Full admission to the major is a competitive gate at the sophomore level, built on four prerequisite courses and a written statement.</p>
+  <p class="sec-intro">The Department offers a single ABET-accredited B.S. in Engineering, built around 129 credit hours. A 42-credit engineering core, taken alongside math and science coursework, gives every student the same broad grounding before they specialize. From there, a seven-credit sequence pairs engineering projects and capstone work with a practicum series to deliver just-in-time project management guidance. The remaining 15 credits are electives: students can take them freely or use them to complete one of three named concentrations: Civil & Environmental Systems, Geo-Environmental Systems, or Electro-Mechanical Systems. Full admission to the major itself is competitive and happens at the sophomore level, based on four prerequisite courses and a written statement.</p>
 
   <figure class="curriculum-figure">
-    <img id="curriculumMapImg" src="curriculum-map.png" >
+    <img id="curriculumMapImg" class="zoomable" src="curriculum-map.png" alt="JMU Engineering B.S. curriculum map">
     
   </figure>
 
@@ -265,111 +283,148 @@
 <!-- ================= STUDENTS ================= -->
 <section class="major" id="students">
   <p class="sec-num">03 — The proof</p>
-  <h2>Student Work</h2>
-  <p class="sec-intro">What comes out the other end of that practicum-to-capstone spine — competitions won, devices built, and a public showcase every spring.</p>
+  <h2>Student Experiences</h2>
+  <p class="sec-intro">See how our students engage in the classroom, through capstone projects, and through undergraduate research.</p>
 
-  <div class="feature" id="nasa">
-    <p class="feature-eyebrow">NASA Student Launch · 2024–25 season · Project Vulcan I</p>
-    <h3>First place overall, out of 50+ university teams</h3>
-    <p class="meta">Launched May 4, 2025, Huntsville, AL · winners announced June 13, 2025 · <a href="https://www.jmu.edu/news/cise/2025/07-21-engineering-nasa-student-win.shtml" target="_blank" rel="noopener">jmu.edu/news, Jul 21, 2025</a></p>
-    <div class="photo-rail">
-      <div class="photo-slot">
-        <img src="student-photos/nasa-vulcan-team.jpg" alt="Project Vulcan I team with the rocket on the pad, Huntsville, AL — May 2025" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Project Vulcan I team with the rocket on the pad, Huntsville, AL — May 2025</p></div>
+  <h3 class="subsection-head">In the Classroom</h3>
+
+  <div class="feature" id="classroom">
+    <p class="feature-eyebrow">Engineering 231 &middot; Fall 2023</p>
+    <h4>Second-year students design robotic arms to support home healthcare</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <div class="photo-stack">
+          <img class="zoomable" src="student-photos/engr231-robotics-classroom.jpg" alt="Second-year engineering students building a robotic-arm prototype in ENGR 231" loading="lazy">
+          <img class="zoomable" src="student-photos/engr231-robotics-detail.jpg" alt="Close-up of a student wiring the robotic-arm prototype in ENGR 231" loading="lazy">
+        </div>
       </div>
-      <div class="photo-slot">
-        <img src="student-photos/nasa-vulcan-payload.jpg" alt="Launch or recovery shot / close-up of the Lego-astronaut payload" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Launch or recovery shot / close-up of the Lego-astronaut payload</p></div>
+      <div class="feature-text">
+        <p class="body">In ENGR 231, a redesigned single-semester course, second-year students spend five weeks on engineering-skills challenges and five weeks building a robotic-arm prototype aimed at a real problem: understaffed home healthcare. Final projects were tested lifting a stand-in patient &mdash; an egg, a marshmallow for a mattress, and a golf ball for equipment.</p>
+        <blockquote class="pull"><p>"Engineers mustn't tinker &mdash; we must design &mdash; and we do that with a lot of math and physics."</p><cite>&mdash; Daniel Castaneda, engineering faculty</cite></blockquote>
+        <blockquote class="pull"><p>"I want to become a biomedical engineer, so I want to create medical technology. This project has really helped me explore that space."</p><cite>&mdash; Julia Larson, second-year engineering major</cite></blockquote>
+        <p class="readmore">Read more here: <a href="https://www.jmu.edu/news/cise/2023/12-15-engineering-students-build-robotic-prototypes-to-address-healthcare-challenges.shtml" target="_blank" rel="noopener">jmu.edu/news, Dec 15, 2023</a></p>
       </div>
     </div>
-    <div class="stats-row"><span class="pill">1st overall · 50+ teams</span><span class="pill">1st, AIAA Payload Innovation</span><span class="pill">2nd, AIAA Reusable Launch Vehicle</span></div>
-    <p class="body">An eight-student team built a full-scale rocket with integrated avionics, a recovery system, and a spacecraft-inspired payload carrying Lego astronauts — then took first place overall against more than 50 university teams at NASA's Student Launch, plus two additional AIAA awards.</p>
-    <p class="roster"><span class="roster-label">Team:</span>Josiah Walker · Owen Bailey · Grant Whitlow · Matthew Smith · Ethan Specht · Thomas Vancil · Lily DeBruycker · Katelyn Marshall</p>
-    <blockquote class="pull"><p>"We all chose this challenging capstone to develop new skills and prove that JMU engineers could be competitive."</p><cite>— Josiah Walker, team member</cite></blockquote>
-    <blockquote class="pull"><p>"Their dedication, creativity and perseverance exemplify the very best of our program."</p><cite>— Dr. Steven Woodruff, faculty advisor</cite></blockquote>
+    <!-- Note for review: the source article credits three faculty for ENGR 231 -- Daniel Castaneda, Jason Forsyth, and Kyle Gipson. Only Castaneda is quoted in the piece, so only he's named in the body; Jason's own name is left out of the visible copy since he's the one assembling this flier, but it's accurate to the source if he'd rather it be named alongside Castaneda. Also: Julia Larson is quoted here as a then-second-year student (2023) and separately appears as a 2026 graduating senior in the "Through Undergraduate Research" feature above -- same person, two different points in her JMU career, not a duplication error. Flag either if they read wrong. -->
   </div>
 
-  <div class="feature">
-    <p class="feature-eyebrow">NASA Student Launch · 2025–26 season · Sirius I</p>
-    <h3>Ninth overall — and a rocket that survived a 4,000-foot drop</h3>
-    <p class="meta">Nine-month build, 2025–26 season · <a href="https://www.jmu.edu/news/cise/2026/08-27-beyond-the-rocket.shtml" target="_blank" rel="noopener">jmu.edu/news, Aug 27, 2026</a></p>
-    <div class="photo-rail single">
-      <div class="photo-slot">
-        <img src="student-photos/nasa-sirius-team.jpg" alt="Sirius I team during build/testing, or on the launch pad" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Sirius I team during build/testing, or on the launch pad</p></div>
+  <h3 class="subsection-head">Through Capstone Projects</h3>
+
+  <div class="feature" id="nasa">
+    <p class="feature-eyebrow">NASA Student Launch &middot; 2024&ndash;26 &middot; Vulcan I &amp; Sirius I</p>
+    <h4>First place in 2025 &mdash; ninth, and an AIAA award, in 2026</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <div class="photo-stack">
+          <img class="zoomable" src="student-photos/nasa-vulcan-team.jpg" alt="Project Vulcan I team with their rocket, Huntsville, AL, May 2025" loading="lazy">
+          <img class="zoomable" src="student-photos/nasa-sirius-team.jpg" alt="Sirius I team at the NASA Student Launch competition, Huntsville, AL, 2026" loading="lazy">
+        </div>
+      </div>
+      <div class="feature-text">
+        <div class="stats-row"><span class="pill">2025: 1st overall &middot; 50+ teams</span><span class="pill">2026: 9th overall &middot; AIAA award</span></div>
+        <p class="body">Two JMU Engineering senior capstone teams have competed in NASA's Student Launch Initiative under faculty advisor Dr. Steven Woodruff. Project Vulcan I took first place overall against more than 50 university teams in 2025; the following year, Sirius I placed ninth and won an AIAA Reusable Launch Vehicle Award.</p>
+        <blockquote class="pull"><p>"We all chose this challenging capstone to develop new skills and prove that JMU engineers could be competitive."</p><cite>&mdash; Josiah Walker, Vulcan I team member</cite></blockquote>
+        <blockquote class="pull"><p>"The technical knowledge matters, but learning how to make sound decisions under pressure, communicate across disciplines and improve after failure is what prepares them for professional engineering."</p><cite>&mdash; Dr. Steven Woodruff, faculty advisor to both teams</cite></blockquote>
+        <p class="readmore">Read more here: <a href="https://www.jmu.edu/news/cise/2025/07-21-engineering-nasa-student-win.shtml" target="_blank" rel="noopener">jmu.edu/news, Jul 21, 2025</a> &middot; <a href="https://www.jmu.edu/news/cise/2026/08-27-beyond-the-rocket.shtml" target="_blank" rel="noopener">jmu.edu/news, Aug 27, 2026</a></p>
       </div>
     </div>
-    <div class="stats-row"><span class="pill">9th overall</span><span class="pill">AIAA Reusable Launch Vehicle Award</span></div>
-    <p class="body">The following year's team built Sirius I, a fiberglass high-power rocket with a triple-deployment recovery system and an extra parachute to stabilize an unusually heavy nose cone. During testing the rocket survived an unplanned 4,000-foot drop — though the article's real subject is less the rocket than what the team learned finishing a nine-month build: trust, communication, and working through setbacks under a hard deadline.</p>
-    <p class="roster"><span class="roster-label">Team, as named in the article:</span>Chuck Neff · Jake Kozura · Kimberly Carter '26 (avionics/recovery lead) · Zach Morse · Gabe Rohrbach '26 (structures lead) · Jackson Lambert '26 (outreach lead) · Gino Fontana · Valentina Paz Soldan · Josh Powell · James Carsner</p>
-    <blockquote class="pull"><p>"The most important part about working in a team is open and honest conversations."</p><cite>— Kimberly Carter, avionics/recovery lead</cite></blockquote>
-    <blockquote class="pull"><p>"I learned that you need to trust your team."</p><cite>— Gabe Rohrbach, structures lead</cite></blockquote>
-    <p class="footnote">Note for review: a "Chuck Neff" is named as a student on the Sirius I roster in this article, but the July 2025 Vulcan I article separately credits a "Chuck Neff" as Valley Aerospace Team president and outside mentor to that earlier team. Confirm with the department before this name goes on anything printed.</p>
+    <!-- Note for review: a "Chuck Neff" is listed as a student team member on both the Vulcan I (2025) and Sirius I (2026) rosters in JMU's own articles, but the 2025 article separately credits a "Chuck Neff" as Valley Aerospace Team president and outside mentor to that same team. Confirm with the department whether this is one person or a name collision before this goes on anything printed. -->
   </div>
 
   <div class="feature" id="xchange">
-    <p class="feature-eyebrow">Engineering xChange &amp; the CISE Student Showcase · Apr 17–18, 2026</p>
-    <h3>100+ projects, seven disciplines, one open house</h3>
-    <p class="meta">King Hall &amp; the Engineering/Geosciences Building, JMU campus · <a href="https://www.jmu.edu/news/cise/2026/04-24-cise-student-showcase.shtml" target="_blank" rel="noopener">jmu.edu/news, Apr 24, 2026</a> · <a href="https://www.instagram.com/jmuengineering/p/DW40IQADTdR/" target="_blank" rel="noopener">@jmuengineering, Apr 8, 2026</a></p>
-    <div class="photo-rail">
-      <div class="photo-slot">
-        <img src="student-photos/xchange-showcase-floor.jpg" alt="Showcase floor — posters, demo tables, a crowd of visitors" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Showcase floor — posters, demo tables, a crowd of visitors</p></div>
+    <p class="feature-eyebrow">CISE Student Showcase &middot; Engineering Day, EnGEO &middot; Apr 18, 2026</p>
+    <h4>Eleven capstone teams, one day of Engineering demos</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <img class="zoomable" src="student-photos/xchange-steel-bridge.jpg" alt="A student explains a steel-bridge model to a visitor at the CISE Student Showcase" loading="lazy">
       </div>
-      <div class="photo-slot">
-        <img src="student-photos/xchange-student-demo.jpg" alt="A student presenting or demoing a specific build" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">A student presenting or demoing a specific build (rocketry team or DUKEsat are good candidates)</p></div>
+      <div class="feature-text">
+        <div class="stats-row"><span class="pill">100+ projects showcase-wide</span><span class="pill">11 Engineering capstone teams</span></div>
+        <p class="body">Within the CISE Student Showcase's two days and 100-plus projects college-wide, Engineering's senior capstone teams get a day of their own for exhibits and demonstrations in the EnGEO building. This year's eleven-team lineup included an AISC&ndash;ASCE steel bridge competition team, weight-lifting prosthetics, two Shell Eco-marathon vehicles (internal-combustion and electric), an AIAA Design-Build-Fly aircraft team, an electric human-powered vehicle, a stream-restoration study, a theater modular lift, and a biomedical device for lower-back pain &mdash; alongside the NASA Student Launch rocket team featured elsewhere on this page.</p>
+        <p class="readmore">Read more here: <a href="https://www.jmu.edu/news/cise/2026/04-24-cise-student-showcase.shtml" target="_blank" rel="noopener">jmu.edu/news, Apr 24, 2026</a> &middot; <a href="https://www.jmu.edu/cise/student-showcase/engineering.shtml" target="_blank" rel="noopener">jmu.edu/cise, Engineering Day schedule</a></p>
       </div>
     </div>
-    <div class="stats-row"><span class="pill">100+ projects</span><span class="pill">7 CISE disciplines</span></div>
-    <p class="body">Every spring, students across Biotechnology, Computer Science, Engineering, Geography, Information Technology, Intelligence Analysis, and ISAT put a year of work on the table — posters, live demos, and interactive exhibits, open to faculty, industry partners, and the community. On the engineering side, projects named in the recap include the biomedical back-pain device below, a drone-based emergency-response system, a portable solar-powered water purifier for disaster relief, a steel bridge project, the rocketry team's work, a theatre lift prototype, and the DUKEsat capstone.</p>
-    <blockquote class="pull"><p>"They're not just completing an assignment. They're creating something that could be used outside the classroom."</p><cite>— Jeff Tang, interim dean, CISE</cite></blockquote>
-    <p class="footnote">Note for review: it isn't confirmed from the source material whether "Engineering xChange" is the department's name for its slice of the CISE-wide showcase or a separate but adjacent event. Presented together here, not merged into a single claim, pending one line of confirmation from the department.</p>
+    <!-- Note for review, 2026-09-17: rewritten at Jason's request to focus on Engineering specifically rather than the whole CISE college. Four things worth flagging:
+         (1) The old open question about "Engineering xChange" vs. the CISE Student Showcase is resolved, not just re-flagged: jmu.edu/cise/engineering/xchange/index.shtml now 301-redirects to jmu.edu/cise/student-showcase/index.shtml, so "xChange" reads as a retired name that's been folded into the CISE-wide Student Showcase, not a separate event. Eyebrow text updated accordingly; kept id="xchange" only for internal anchor stability.
+         (2) The Jeff Tang quote from the original article ("They're not just completing an assignment...") was dropped rather than kept out of context -- he's the CISE college's interim dean speaking about the whole Showcase, not Engineering specifically, and no Engineering-specific quote turned up in the sources checked (the news article or the Engineering Day schedule page). Better to run without a quote here than force one that isn't really about Engineering.
+         (3) The eleven-team list and the "Engineering Day, EnGEO, Apr 18" framing come from jmu.edu/cise/student-showcase/engineering.shtml's own schedule table, not the news article -- that page is the primary source for everything Engineering-specific in this rewrite. One list entry, "ICE2EV", was left out of the body text since its meaning isn't self-evident from the title and I didn't want to guess at what it stands for.
+         (4) "A biomedical device for lower-back pain" on that schedule is very plausibly the same Dr. Altaii capstone covered in this page's separate back-pain-relief-devices feature (same general project, same academic year) -- but it's a different venue and date (this Showcase entry vs. the Jun 17, 2026 UVA symposium), so it's presented here as its own listed item rather than asserted as the identical team without confirmation. -->
   </div>
 
   <div class="feature" id="banquet">
-    <p class="feature-eyebrow">Senior Banquet &amp; Order of the Engineer · Jun 17, 2026</p>
-    <h3>Graduating seniors take the Order of the Engineer oath</h3>
-    <p class="meta"><a href="https://www.instagram.com/jmuengineering/p/DZtFRUcCVAM/" target="_blank" rel="noopener">@jmuengineering, Jun 17, 2026</a></p>
-    <div class="photo-rail">
-      <div class="photo-slot">
-        <img src="student-photos/banquet-ring-ceremony.jpg" alt="Ring ceremony / oath moment at the Senior Banquet" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Ring ceremony / oath moment at the Senior Banquet</p></div>
+    <p class="feature-eyebrow">Senior Banquet &amp; Order of the Engineer &middot; Jun 17, 2026</p>
+    <h4>Graduating seniors take the Order of the Engineer oath</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <img class="zoomable" src="student-photos/banquet-ring-ceremony.jpg" alt="A graduating senior shakes hands during the Order of the Engineer ring ceremony" loading="lazy">
       </div>
-      <div class="photo-slot">
-        <img src="student-photos/banquet-award-recipients.jpg" alt="Award recipients on stage, or a group shot of the Class of 2026" loading="lazy" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';" style="display:none;">
-        <div class="ph-fallback"><span class="ph-mark">Photo — to add</span><p class="ph-caption">Award recipients on stage, or a group shot of the Class of 2026</p></div>
+      <div class="feature-text">
+        <p class="body">As the academic year closed, graduating seniors were inducted into the Order of the Engineer at the Senior Banquet — taking an oath to the profession and public safety, and receiving an Engineer's Ring.</p>
+        <p class="readmore">Read more here: <a href="https://www.instagram.com/jmuengineering/p/DZtFRUcCVAM/" target="_blank" rel="noopener">@jmuengineering, Jun 17, 2026</a></p>
       </div>
     </div>
-    <p class="body">As the academic year closed, JMU Engineering gathered graduating seniors for the Senior Banquet and Awards Ceremony. A highlight was the induction of graduating seniors into the Order of the Engineer: students took an oath affirming their commitment to the responsibilities of the profession and to public safety and well-being, and each received an Engineer's Ring as a symbol of that obligation.</p>
-    <p class="roster"><span class="roster-label">2026 student award recipients:</span>Aiden Gammache — Excellence in Academic Achievement &amp; Madison Engineer Award · Julia Larson — Excellence in Scholarly Success · Sydney Witcher &amp; Brady Lane — Excellence in Leadership · Michael Glover — Engineering Department Head Award</p>
+    <!-- Editorial call, not a sourced fact: filed under "Capstone Projects" as the culminating milestone of the capstone-driven senior year, since it doesn't fit "classroom" or "research" either. It's a ceremony, not a project story — flag if this placement reads wrong. -->
   </div>
 
-  <div class="feature">
-    <p class="feature-eyebrow">One to watch · @jmuengineering, May 22, 2026</p>
-    <h3>Aiden Gammache — 4.0 GPA, straight into the field</h3>
-    <p class="meta"><a href="https://www.instagram.com/jmuengineering/p/DYpon-zp9rI/" target="_blank" rel="noopener">@jmuengineering, May 22, 2026</a></p>
-    <p class="body">Aiden Gammache graduated as CISE valedictorian and JMU co-valedictorian with a 4.0 GPA, and went straight into a Water Resources Engineer role at AMT Engineering, working on infrastructure and environmental-restoration projects in the D.C./Maryland/Virginia area.</p>
+  <div class="feature" id="backpain">
+    <p class="feature-eyebrow">Systems and Information Engineering Design Symposium &middot; UVA &middot; Jun 17, 2026</p>
+    <h4>Two capstone teams, two takes on portable back-pain relief</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <img class="zoomable" src="student-photos/backpain-lab.jpg" alt="Students testing a portable spinal-traction device in the engineering lab" loading="lazy">
+      </div>
+      <div class="feature-text">
+        <p class="body">Two capstone teams advised by Dr. Karim Altaii each built a portable spinal-traction device as an alternative to bulky clinic equipment &mdash; a pneumatic traction chair and a mechanical crank-driven design &mdash; and presented both at the 2026 Systems and Information Engineering Design Symposium at UVA.</p>
+        <blockquote class="pull"><p>"The best part was the freedom &mdash; being given a problem and designing a solution from scratch."</p><cite>&mdash; Marvin Fuentes, team lead</cite></blockquote>
+        <p class="readmore">Read more here: <a href="https://www.jmu.edu/news/cise/2026/06-17-engineering-back-pain-relief.shtml" target="_blank" rel="noopener">jmu.edu/news, Jun 17, 2026</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="feature" id="mantech">
+    <p class="feature-eyebrow">MANTECH Industry Partnership &middot; Published Dec 5, 2025</p>
+    <h4>An industry partner embedded in capstone, from tour to hire</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <img class="zoomable" src="student-photos/mantech-students.jpg" alt="Capstone team with their Drone Accelerator Project and MANTECH mentor" loading="lazy">
+      </div>
+      <div class="feature-text">
+        <p class="body">Defense contractor MANTECH sponsors engineering capstone projects &mdash; including a &ldquo;Drone Accelerator&rdquo; project &mdash; hosts facility tours and resume-review sessions, and recruits directly out of capstone work.</p>
+        <blockquote class="pull"><p>"Capstone projects offer opportunities to mentor and evaluate students over sustained periods &mdash; relationships that often lead directly to hiring."</p><cite>&mdash; Chris Troughton, MANTECH Academic Engagement Lead</cite></blockquote>
+        <p class="readmore">Read more here: <a href="https://www.jmu.edu/news/cise/2025/12-05-connecting-students-and-industry.shtml" target="_blank" rel="noopener">jmu.edu/news, Dec 5, 2025</a></p>
+      </div>
+    </div>
   </div>
 
-  <div class="feature" id="more">
-    <p class="feature-eyebrow">More student work</p>
-    <h3>Four more, one line each</h3>
-    <div class="more-card">
-      <div><p class="what">Portable back-pain relief devices</p><p class="when">Jun 17, 2026</p></div>
-      <div class="desc"><p>Two capstone teams advised by Dr. Karim Altaii each built a portable spinal-traction device as an alternative to bulky clinic equipment — a pneumatic traction chair and a mechanical crank-driven design — and presented both at the 2026 Systems and Information Engineering Design Symposium at UVA. "The best part was the freedom — being given a problem and designing a solution from scratch." — Marvin Fuentes, team lead.</p><a href="https://www.jmu.edu/news/cise/2026/06-17-engineering-back-pain-relief.shtml" target="_blank" rel="noopener">jmu.edu/news →</a></div>
+  <div class="feature" id="museum">
+    <p class="feature-eyebrow">Explore More Discovery Museum &middot; Harrisonburg, VA &middot; May 13, 2024</p>
+    <h4>Three student-built exhibits open at the local children's museum</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <img class="zoomable" src="student-photos/museum-exhibits-team.jpg" alt="Engineering students building an exhibit for Explore More Discovery Museum" loading="lazy">
+      </div>
+      <div class="feature-text">
+        <p class="body">A team of engineering students designed and built three interactive exhibits &mdash; Wind Racers, Marble Mayhem, and Wingin' It &mdash; for Explore More Discovery Museum in Harrisonburg, working with the museum's exhibit director from concept through installation.</p>
+        <blockquote class="pull"><p>"I strive to create experiences for my students &mdash; to think about engineering from a different and unique perspective."</p><cite>&mdash; Dr. Shraddha Joshi, faculty advisor</cite></blockquote>
+        <blockquote class="pull"><p>"Interviewing stakeholders helped me develop crucial speaking skills and better understand how to engineer for people."</p><cite>&mdash; Michael Poole, student team member</cite></blockquote>
+        <p class="readmore">Read more here: <a href="https://www.jmu.edu/news/cise/2024/05-13-engineering-students-create-interactive-exhibits-for-local-museum.shtml" target="_blank" rel="noopener">jmu.edu/news, May 13, 2024</a></p>
+      </div>
     </div>
-    <div class="more-card">
-      <div><p class="what">An accessible path to the ocean</p><p class="when">Jul 2025 · published Sep 17, 2025</p></div>
-      <div class="desc"><p>Engineering and ISAT students partnered with Punta Leona Beach Club and Nature Resort in Costa Rica to design a beach wheelchair — PVC frame, oversized sand wheels, breathable mesh seating — built to be locally maintainable and reproducible, plus a lighter three-wheel second prototype. "This wasn't just a prototype anymore — it was real." — Daniel Turner, team member.</p><a href="https://www.jmu.edu/news/cise/2025/09-17-students-engineer-accessible-path-to-ocean.shtml" target="_blank" rel="noopener">jmu.edu/news →</a></div>
-    </div>
-    <div class="more-card">
-      <div><p class="what">MANTECH industry partnership</p><p class="when">Published Dec 5, 2025</p></div>
-      <div class="desc"><p>Defense contractor MANTECH sponsors engineering capstone projects (including a "Drone Accelerator" project), hosts facility tours and resume-review sessions, and recruits directly out of capstone work. "Capstone projects offer opportunities to mentor and evaluate students over sustained periods — relationships that often lead directly to hiring." — Chris Troughton, MANTECH Academic Engagement Lead.</p><a href="https://www.jmu.edu/news/cise/2025/12-05-connecting-students-and-industry.shtml" target="_blank" rel="noopener">jmu.edu/news →</a></div>
-    </div>
-    <div class="more-card">
-      <div><p class="what">Student voice on video</p><p class="when">Reel, May 5, 2026</p></div>
-      <div class="desc"><p>A short reel of sophomore Ryan Short talking about why he wants to "get everyone just as excited as he is about engineering" — the one piece of raw, first-person student video in the recent feed. Worth reusing the format even if not this specific clip.</p><a href="https://www.instagram.com/jmucise/reel/DX9Xq9vsX8G/" target="_blank" rel="noopener">instagram.com/jmucise →</a></div>
+    <!-- Note for review: the source article does not use the word "capstone" anywhere, and names no course/number for this project -- placed under "Capstone Projects" per Jason's framing, not a sourced label. Full team: Zach Nelson, Oliver Miller, Erica Dobies, Emily Corsini, Kali Findlow, Michael Poole, Nathan Helems, Joshua Buckner, Nate Dodge (not all named in the body, for length). -->
+  </div>
+
+  <h3 class="subsection-head">Through Undergraduate Research</h3>
+
+  <div class="feature" id="research">
+    <p class="feature-eyebrow">Wearable Computing Group &middot; Class of 2026</p>
+    <h4>Summa Cum Laude, an honors thesis, and a PhD at Penn State</h4>
+    <div class="feature-row">
+      <div class="feature-photo">
+        <img class="zoomable" src="student-photos/julia-larson-honors.jpg" alt="Julia Larson receiving an award at the Engineering Honors ceremony" loading="lazy">
+      </div>
+      <div class="feature-text">
+        <p class="body">Since joining JMU's Wearable Computing Group in 2022, Julia Larson conducted independent research on haptic feedback for exercise performance and recall &mdash; written up as an honors thesis under review for the 2026 International Symposium on Wearable Computing. She graduated Summa Cum Laude with Honors Distinction in Engineering and is headed to a Ph.D. in Biomedical Engineering at Penn State.</p>
+        <p class="readmore">Read more here: <a href="https://jmu-wearable-computing.github.io/blog/2026/graduation/" target="_blank" rel="noopener">jmu-wearable-computing.github.io, May 15, 2026</a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -377,10 +432,10 @@
 
 </div>
 
-<div class="lightbox" id="curriculumLightbox" role="dialog" aria-modal="true" aria-label="Curriculum map, enlarged">
+<div class="lightbox" id="imgLightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
   <span class="lightbox-hint">Click anywhere, or press Esc, to close</span>
   <button class="lightbox-close" type="button">Close &times;</button>
-  <img src="curriculum-map.png" alt="JMU Engineering B.S. curriculum map, enlarged to full resolution">
+  <img id="lightboxImg" src="" alt="">
 </div>
 
 <script>
@@ -408,11 +463,14 @@
     });
   }
 
-  const curriculumImg = document.getElementById('curriculumMapImg');
-  const lightbox = document.getElementById('curriculumLightbox');
+  const lightbox = document.getElementById('imgLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const zoomableImgs = document.querySelectorAll('img.zoomable');
 
-  function openLightbox() {
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -421,7 +479,9 @@
     document.body.style.overflow = '';
   }
 
-  curriculumImg.addEventListener('click', openLightbox);
+  zoomableImgs.forEach((img) => {
+    img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+  });
   lightbox.addEventListener('click', closeLightbox);
   lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
   document.addEventListener('keydown', (e) => {
