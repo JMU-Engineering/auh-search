@@ -27,13 +27,17 @@
   h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(38px,6.2vw,56px);line-height:1.05;margin:0 0 18px;letter-spacing:-.01em}
   .dek{font-size:17px;color:var(--ink-soft);max-width:none;margin:0 0 22px}
   .stat-line{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-faint);margin:0}
+  .apply-cta{font-size:16px;font-weight:500;margin:0}
+  .apply-cta a{color:var(--blue)}
 
   /* nav */
   .controls{padding:22px 0;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:20}
-  nav.jump{display:flex;flex-wrap:wrap;gap:4px 22px}
+  nav.jump{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px}
   nav.jump a{font-size:14px;text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px}
-  @media (prefers-reduced-motion:no-preference){nav.jump a{transition:border-color .15s ease,color .15s ease}}
+  @media (prefers-reduced-motion:no-preference){nav.jump a{transition:border-color .15s ease,color .15s ease,background-color .15s ease}}
   nav.jump a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+  nav.jump a.nav-apply{margin-left:auto;color:var(--paper);background:var(--blue);border:1px solid var(--blue);border-radius:20px;padding:6px 16px 8px;font-weight:500}
+  nav.jump a.nav-apply:hover{color:var(--paper);background:#0052a3;border-bottom-color:var(--blue)}
 
   /* section shell */
   section.major{padding:58px 0 10px;border-bottom:1px solid var(--rule);scroll-margin-top:76px}
@@ -142,6 +146,8 @@
   </p>
 
   <p>Please use this space to explore our people, curriculum, and student experiences.</p>
+
+  <p class="apply-cta">Apply at: <a href="https://jobs.jmu.edu/jobs/academic-unit-head-department-of-engineering-harrisonburg-virginia-united-states" target="_blank" rel="noopener">jobs.jmu.edu</a></p>
 </header>
 
 <div class="controls">
@@ -149,6 +155,7 @@
     <a href="#people">Faculty &amp; Staff</a>
     <a href="#curriculum">Curriculum</a>
     <a href="#students">Student Experiences</a>
+    <a class="nav-apply" href="https://jobs.jmu.edu/jobs/academic-unit-head-department-of-engineering-harrisonburg-virginia-united-states" target="_blank" rel="noopener">Apply Now</a>
   </nav>
 </div>
 
